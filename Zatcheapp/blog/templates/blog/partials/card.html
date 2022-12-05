@@ -1,0 +1,19 @@
+{% load static %}
+
+
+
+    <a href="{% url 'blog_details' blog.slug %}">
+        <div class="card text-bg-dark" style="width: 18rem;" >
+        
+            <img src="{{ blog.image.url }}"  class="img-fluid" alt="" >
+            <div class="card-img-overlay">
+                <h5 class="card-title">
+                
+                    {{ blog.name }}
+                
+                </h5>
+                <p class="card-text">{{blog.description|slice:"0:56"|safe}}...</p>
+                
+        </div>
+    </a>
+

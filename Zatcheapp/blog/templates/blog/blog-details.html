@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block css_files %}
+<style>
+    body {
+      background-image: url("{% static 'img/'|add:'world.gif' %}");
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      
+    }
+    h1{
+      margin: 100px;
+      color: azure;
+      text-align: center;
+      font-size: 100px;
+      font-weight: bolder;
+      -webkit-text-stroke: 2px #000;
+    }
+
+    h2{
+      margin: 50px;
+      color :azure;
+      font-weight: bold;
+      -webkit-text-stroke: 2px #000;
+    }
+    h3{
+      margin: 50px;
+      color: azure;
+      font-weight: bold;
+      -webkit-text-stroke: 2px #000;
+    }
+    h4{
+      margin: 50px;
+      color: azure;
+      font-weight: bold;
+      -webkit-text-stroke: 2px #000;
+    }
+    h5{
+      margin: 500px;
+      color: azure;
+      font-weight: bold;
+      -webkit-text-stroke: 2px #000;
+    }
+    h6{
+      margin: 50px;
+      color:azure;
+      font-weight: bold;
+      -webkit-text-stroke: 2px #000;
+    }
+    p{
+      margin: 50px;
+      color:azure;
+      font-weight: bold;
+      -webkit-text-stroke: 2px #000;
+    }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <h1>{{blog.name}}</h1>
+    <h2>{{blog.description|safe}}</h2>
+
+
+{% endblock %}
