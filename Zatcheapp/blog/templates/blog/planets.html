@@ -1,29 +1,67 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block title %} 
+    Planets
+{% endblock %}
 
 {% block css_files %} 
-<style>
-    a { color: inherit; } 
-</style>
+
+    <link rel = "stylesheet" href= "{% static 'blog/css/blogsStyle.css' %}">
+
 {% endblock %}
 
 {% block content %}
 <div class="container-fluid">
     <div class = "row">
         <div class = "col-3 mt-3">
-            {% include 'blog/partials/categoryList.html' %}
+            <div class="list-group">
+                {% for category  in categories %}
+                    
+                 
+                        {% if category.slug == selected_category     %}
+                        <a class="list-group-item list-group-item-action active" href="{% url 'categories' category.slug %}">{{category.name}}</a>
+                        {% else %}
+                        <a class="list-group-item list-group-item-action" href="{% url 'categories' category.slug %}">{{category.name}}</a>
+                        {% endif %}
+                    
+
+        
+        
+
+                {% endfor %}
+            </div>
+        
+        
         </div>
         <div class = "col-9 mt-3">
-            {% if blogs|length > 0 %}
-                {% for blog in blogs %}
+        
+                {% if blogs|length > 0 %}
+
+
+                
+                <div class = "grid-container">
+                   
+                    {% for blog in blogs %}
                     
-                        {% include 'blog/partials/card.html' %}
+                            
+                    {% include 'blog/partials/card.html' %}
+
+                            
+                </div>         
+                        
                     
-                {% endfor %}
-            {% else %}
-                <div class = "alert alert-warning">
-                    No Planets
-                </div>
-            {% endif %}
+                    {% endfor %}
+                
+                
+                {% else %}
+                    <div class = "alert alert-warning">
+                        No Planets
+                    </div>
+
+                
+                {% endif %}
+        
         
         </div>
     </div>

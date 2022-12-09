@@ -1,10 +1,16 @@
 {% extends 'base.html' %}
 
 {% load static %}
+
+{% block title %} 
+{{blog.name}}
+{% endblock %}
+
+
 {% block css_files %}
 <style>
     body {
-      background-image: url("{% static 'img/'|add:'world.gif' %}");
+      background-image: url("{{ blog.image.url }}");
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-size: cover;

@@ -11,36 +11,35 @@
             <a class="nav-link " aria-current="page" href="{% url 'home' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'planets' %}">Planets</a>
+            <a class="nav-link" href="{% url 'planets'  %}">Planets</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'galaxies' %}">Galaxies</a>
           </li>
+
           <li class="nav-item">
-            <a class="nav-link" href=""></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="{% url 'stars' %}">Stars</a>
           </li>
         </ul>
 
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          {% if user.isauthenticated %}
+          {% if user.is_authenticated %}
+      
             <li class="nav-item">
-              <a class="nav-link " aria-current="page" href="">Login</a>
+              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">Register</a>
+              <a class="nav-link" href="">Welcome, {{user.username|title}}</a>
             </li>
           {% else %}
-        
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="{% url 'login' %}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'register' %}">Register</a>
+          </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="">Logout</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="">Welcome</a>
-            </li>
+         
           {% endif %}
         </ul>
 

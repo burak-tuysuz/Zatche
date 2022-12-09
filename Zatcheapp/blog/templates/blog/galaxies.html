@@ -1,15 +1,49 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block title %} 
+    Galaxies
+{% endblock %}
+
+{% block css_files %} 
+
+    <link rel = "stylesheet" href= "{% static 'blog/css/blogsStyle.css' %}">
+
+{% endblock %}
 
 {% block content %}
 <div class="container-fluid">
     <div class = "row">
-        {% include 'blog/partials/categoryList.html' %}
-        
-        {% for blog in blogs %}
+        <div class = "col-3 mt-3">
+            <div class="list-group">
+                {% for category  in categories %}
+                            
+                        
+                {% if category.slug == selected_category     %}
+                <a class="list-group-item list-group-item-action active" href="{% url 'categories' category.slug %}">{{category.name}}</a>
+                {% else %}
+                <a class="list-group-item list-group-item-action" href="{% url 'categories' category.slug %}">{{category.name}}</a>
+                {% endif %}
+            
+
+            </div>
+        </div>
+
+
+        {% endfor %}
+        <div class = "col-9 mt-3">
+        {% if blogs|length > 0 %}
+            {% for blog in blogs %}
             
                 {% include 'blog/partials/card.html' %}
             
-        {% endfor %}
+            {% endfor %}
+         {% else %}
+            <div class = "alert alert-warning">
+                No Galaxies
+            </div>
+        {% endif %}
+        </div>
         
     </div>
 </div>
