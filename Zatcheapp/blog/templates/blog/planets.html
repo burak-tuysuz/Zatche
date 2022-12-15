@@ -44,12 +44,12 @@
                    
                     {% for blog in blogs %}
                     
-                            
-                    {% include 'blog/partials/card.html' %}
-
+                    {% if blog.is_active %}
+                        {% include 'blog/partials/card.html' %}
+                    
                             
                 </div>         
-                        
+                    {% endif %}
                     
                     {% endfor %}
                 

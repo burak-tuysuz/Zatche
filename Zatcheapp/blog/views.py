@@ -6,8 +6,13 @@ from blog.models import Blog,Category,Type
 
 
 def index(request):
-    
-    return render(request,"blog/index.html")
+    context = {
+        "blogs" : Blog.objects.all(),
+        "categories" : Category.objects.all(),
+        
+        
+    }
+    return render(request,"blog/index.html",context)
 
 
 

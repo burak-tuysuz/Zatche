@@ -1,8 +1,80 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}
+ Home Page
+{% endblock %}
+{% block css_files %} 
+
+    <link rel = "stylesheet" href= "{% static 'blog/css/blogsStyle.css' %}">
+    <style>
+      h1{
+          margin: 50px;
+          color: azure;
+          text-align: center;
+          font-size: 100px;
+          font-weight: bolder;
+          -webkit-text-stroke: 2px #000;
+      }
+      h2{
+         margin: 40px;
+         color: azure;
+         text-align: center;
+         font-size: 50px;
+         font-weight: bolder;
+         -webkit-text-stroke: 2px #000;
+       }
+  </style>
+   
+
+{% endblock %}
+
+{% block body %}
+background = "{% static 'img/world.gif' %}"
+{% endblock %}
+
 {% block content %}
-   <img src= "{% static 'img/backworld.gif' %}",alt= "",class="img-fluid">
+
+   <h1>
+      Welcome 
+   </h1>
+
+   <h2>
+      Highlights
+   </h2>
+   
+   <div class = "col mt-3">
+        
+      {% if blogs|length > 0 %}
+
+
+      
+      <div class = "grid-container">
+         
+          {% for blog in blogs %}
+          
+          {% if blog.is_active %}
+            {% if blog.is_home %}
+              {% include 'blog/partials/card.html' %}
+          
+                  
+      </div>     
+         {% endif %}    
+          {% endif %}
+          
+          {% endfor %}
+      
+      
+      {% else %}
+          <div class = "alert alert-warning">
+              No Planets
+          </div>
+
+      
+      {% endif %}
+
+
+</div>
 
 {% endblock %}
 
