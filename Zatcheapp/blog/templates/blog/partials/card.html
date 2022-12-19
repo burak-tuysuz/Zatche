@@ -9,7 +9,7 @@
             <div class="card-img-overlay">
                 <h5 class="card-title">
                 
-                    {{ blog.name }}
+                    {{ blog.name|title }}
                 
                 </h5>
                 <p class="card-text">{{blog.description|slice:"0:256"|safe}}...</p>
